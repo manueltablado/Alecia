@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(66, 153, 225, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(66, 153, 225, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(66, 153, 225, 0);
+  }
+}
+
+.image-container {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  isolation: isolate;
+}
+
+.image-container:hover .hover-float {
+  animation: float 1s ease-in-out infinite;
+}
+
+.image-container:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.image-active {
+  transform: scale(0.98);
+  transition: transform 0.2s ease-in-out;
+}
+
+.label-slide-up {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.image-container:hover .label-slide-up {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Only apply hover effects when button is available */
+.image-container[role="button"]:hover {
+  animation: pulse 2s infinite;
+}
